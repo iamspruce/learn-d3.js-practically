@@ -1,0 +1,57 @@
+---
+title: "Getting Started"
+description: "Setting up your environment and your first D3 project."
+chapter: "Introduction"
+order: 4
+chapterOrder: 1
+chapterTitle: "Introduction"
+pubDate: "12/18/2025"
+hasQuiz: true
+---
+
+import D3Quiz from "@components/d3/D3Quiz.astro";
+
+# Getting Started
+
+Ready to write your first line of D3? Let's get your environment set up.
+
+### Installation
+
+The easiest way to include D3 in your project is via NPM:
+
+```bash
+npm install d3
+```
+
+Or, if you just want to experiment in a single HTML file, you can load it from a CDN:
+
+```html
+<script src="https://d3js.org/d3.v7.min.js"></script>
+```
+
+### Your Initial Setup
+
+In this course, we will heavily use the **Live Playground**. It's pre-configured with D3 v7, so you don't even need to install anything to follow along!
+
+### Basic Selection
+
+The first step in any D3 project is selecting an element to work with:
+
+```javascript
+// Select the body and change its background color
+d3.select("body").style("background-color", "black");
+```
+
+---
+
+## 🧠 Final Check for this Chapter
+
+Let's wrap up the introduction chapter with one last quiz.
+
+<D3Quiz
+  quizId="getting-started-quiz"
+  chapterSlug="Introduction"
+  lessonSlug="Introduction/getting-started"
+  quizFileName="getting-started"
+  title="Getting Started Quiz"
+/>

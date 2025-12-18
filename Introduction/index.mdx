@@ -1,0 +1,112 @@
+---
+title: "Introduction to D3"
+description: "A complete guide to d3.js"
+chapter: "Introduction"
+order: 1
+chapterOrder: 1
+chapterTitle: "Introduction"
+pubDate: "12/17/2025"
+hasQuiz: true
+---
+
+import D3Quiz from "@components/d3/D3Quiz.astro";
+import D3Playground from "@components/d3/D3Playground.astro";
+
+**D3.js** (Data-Driven Documents) is a powerful JavaScript library for creating **interactive data visualizations in the browser**.
+
+For the longest time, I have been wanting to write a complete guide on **D3.js**. Not just another online course or dry tutorial, but something **practical**,a guide where you can interact with the examples, edit them on the fly, and see exactly what happens.
+
+This course, **Practical D3.js**, is my way of finally doing that. In the chapters and lessons that follow, we’ll look at **what D3.js is**, **how to use it**, and **how to build real visualizations with it**, step by step.
+
+## The Story of D3
+
+I first stumbled on D3 in 2018 when I wanted to display some population data on a bar chart. I spent weeks learning D3 just to display a simple bar chart, not realizing at the time that was overkill. You see, **D3.js** itself is not a charting library; it's not a library made specifically for creating charts. This is even mentioned in the official documentation:
+
+> "D3 is not a charting library. It is a lower-level library for building data-driven documents. It doesn't have a concept of charts."
+> — **Mike Bostock**, Creator of D3.js
+
+If all you want to do is just display some data on charts like bar, pie charts then d3.js is way overkill, you should just use a library that was specifically made for that.
+
+## So why should I use D3?
+
+You should use D3 when you want **full control** over how your visualization looks and behaves. If you want more than just static charts — like animations, custom layouts, user interactions, or visuals no one has done before — D3 lets you build exactly what you want.
+
+It doesn’t hold your hand or give you templates. Instead, it gives you the **building blocks** to make your vision real.
+
+## So who is this course for?
+
+This course assumes you know what Javascript is and this is not the first time you're hearing about it, you know some basics and you can verify that this is the correct way declare a variable and create a loop in Javascript
+
+<D3Quiz
+  quizId="js-basics-check"
+  chapterSlug="Introduction"
+  lessonSlug="Introduction"
+  quizFileName="js-basics"
+  title="JavaScript Basics Check"
+/>
+
+If that sounds familiar, you’re ready for this.
+
+## How to use this course
+
+As I mentioned earlier, this course is mostly practical. Every example comes with an **interactive playground** (with full source code), so you can play with the code and see what changes.
+
+Most visualizations also include controls — sliders, buttons, color pickers — so you can see how changing values affects what’s drawn.
+
+<D3Playground
+  lessonSlug="Introduction"
+  exampleName="svg-square"
+  title="Interactive SVG Square"
+  editable={true}
+  controls={`
+<div class="control-grid" style="display: grid; grid-template-columns: 1fr; gap: 2rem; width: 100%;">
+    <div class="range-control" style="display: flex; flex-direction: column; gap: 0.5rem;">
+      <div class="range-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <label for="size" class="range-label" style="font-size: 0.875rem; font-weight: 500;">Square Size</label>
+        <span class="range-value" data-control="size" style="font-size: 0.875rem; font-weight: 500; color: var(--pink-10); font-family: monospace;">100px</span>
+      </div>
+      <input type="range" id="size" class="range-input" data-control-id="size" data-unit="px" min="20" max="400" step="1" value="100" style="width: 100%;" />
+    </div>
+    <div class="color-control" style="display: flex; flex-direction: column; gap: 0.5rem;">
+      <label for="color" class="color-label" style="font-size: 0.875rem; font-weight: 500;">Square Color</label>
+      <div class="color-input-wrapper" style="display: flex; align-items: center; gap: 0.75rem;">
+        <input type="color" id="color" class="color-input" data-control-id="color" value="#ff0066" style="width: 60px; height: 32px; border: 1px solid var(--gray-6); cursor: pointer; background: none;" />
+        <span class="color-value" data-control="color" style="font-size: 0.875rem; font-weight: 500; color: var(--pink-10); font-family: monospace;">#ff0066</span>
+      </div>
+    </div>
+</div>
+<script>
+  (function() {
+    const panel = document.currentScript.closest('.playground-controls');
+    if (!panel) return;
+    const playgroundId = panel.getAttribute('data-playground-id');
+    const pg = document.querySelector('.d3-playground[data-playground-id="' + playgroundId + '"]');
+    
+    const sizeInput = panel.querySelector('[data-control-id="size"]');
+    const colorInput = panel.querySelector('[data-control-id="color"]');
+    
+    if (sizeInput) {
+      sizeInput.addEventListener('input', (e) => {
+        panel.querySelector('[data-control="size"]').textContent = e.target.value + 'px';
+        if (pg && pg.sendToIframe) pg.sendToIframe('size', parseFloat(e.target.value));
+      });
+    }
+    
+    if (colorInput) {
+      colorInput.addEventListener('input', (e) => {
+        panel.querySelector('[data-control="color"]').textContent = e.target.value;
+        if (pg && pg.sendToIframe) pg.sendToIframe('color', e.target.value);
+      });
+    }
+  })();
+</script>
+  `}
+/>
+
+Each chapter contains multiple lessons, and every lesson has a quiz so you can test what you learned. At the end of each chapter, you’ll get a review quiz too.
+
+Lessons are designed to **build on each other**, but they’re also self-contained. For example, if you already know how to set up D3.js, you can skip that part and jump ahead.
+
+From the menu at the top right, you can see which chapters and lessons you’ve completed or skipped.
+
+We’ll start simple and then gradually move toward more advanced topics — always making sure you understand not just _what_ to do, but _why_ it works.

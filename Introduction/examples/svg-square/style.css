@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--gray-2);
+  background: var(--mauve-2);
 }
 
 svg {
@@ -12,7 +12,7 @@ svg {
   height: 100%;
   max-width: 500px;
   max-height: 500px;
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
 }
 
 #my-square {
